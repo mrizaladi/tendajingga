@@ -9,6 +9,7 @@ class UserController extends Controller
 {
     public function index(UsersDataTable $dataTable)
     {
-        return $dataTable->render('users.index');
+        $title = "Manage User";
+        return $dataTable->with(['title' => $title])->render('datatables.base');
     }
 }

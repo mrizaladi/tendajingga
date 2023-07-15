@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\CustomersDataTable;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -9,9 +10,10 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(CustomersDataTable $dataTable)
     {
-        return view('customers.index');
+        $title = "Manage User";
+        return $dataTable->with(['title' => $title])->render('datatables.base');
     }
 
     /**
